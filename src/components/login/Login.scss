@@ -1,0 +1,91 @@
+* {
+  font-family: sans-serif;
+}
+
+.login_form_box {
+  height: 410px;
+  width: 380px;
+  position: relative;
+  margin: 6% auto;
+  background: rgb(206, 183, 183);
+  padding: 5px;
+}
+
+.login_form_box > .field_design {
+  top: 20px;
+  margin: auto;
+  text-align: center;
+  position: relative;
+}
+
+.login_form_box > .input_box {
+  top: 120px;
+  position: absolute;
+  width: 280px;
+  left: 50px;
+  transition: .5s;
+}
+
+.login_form_box > .input_box > .input_field {
+  width: 100%;
+  padding: 10px 0;
+  margin: 5px 0;
+  border-left: 0;
+  border-right: 0;
+  border-top: 0;
+  border-bottom: 1px solid #999;
+  outline: none;
+  background: transparent;
+}
+
+.login_form_box > .input_box > .submit_button {
+  width: 85%;
+  padding: 10px 30px;
+  cursor: pointer;
+  display: block;
+  margin: auto;
+  border: 0;
+  outline: none;
+  background: rgb(66, 164, 255);
+  border-radius: 30px;
+}
+
+.login_form_box > .input_box > .submit_button:hover {
+    background: rgb(0, 118, 228);
+}
+
+.login_form_box > .input_box > .check_box {
+  margin: 30px 10px 30px 0;
+}
+
+.below_button0 {
+  font-size: 12px;
+  bottom: 58px;
+  position: absolute;
+  display: flex;
+  margin: auto;
+  text-align: center;
+  width: 100%;
+}
+
+.login_form_box > .below_button1 {
+  @extend .below_button0;
+  bottom: 50px;
+}
+
+.login_form_box > .below_button1 > .col-95 > .another_comp {
+  color: black;
+  text-decoration: none;
+  margin-left: 5px;
+}
+
+.login_form_box > .below_button1 > .col-95 > .another_comp:hover {
+  text-decoration: underline;
+  color: blue;
+  cursor: pointer;
+}
+
+.login_form_box > .below_button1 > .col-95 {
+  width: 95%;
+  text-align: center;
+}

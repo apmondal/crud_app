@@ -1,6 +1,8 @@
 import { useState } from "react";
+import { useCookies } from "react-cookie";
 import { Link, useHistory } from "react-router-dom";
 import fireDatabase from "../../firebase";
+import { Sign } from "../../utils/jwt";
 import "./Register.scss"
 
 
@@ -13,6 +15,7 @@ const Register = () => {
         checkbox: false
     })
     const history = useHistory();
+    const [cookies, setCookies] = useCookies();
 
     const updateValue = (event) => {const name = event.target.name;
         const value = (name === "checkbox")?event.target.checked: event.target.value;
@@ -34,6 +37,20 @@ const Register = () => {
                 data.email,
                 data.password
             ).then((res) => {
+                const token = Sign(data.email, res.user.uid);
+
+                if(data.checkbox) {
+                    setCookies("Token", token, {
+                        expires: new Date(Date.now() + 100000000000),
+                        path: "/"
+                    });
+                }
+                else {
+                    setCookies("Token", token, {
+                        expires: new Date(Date.now() + 100000),
+                        path: "/"
+                    });
+                }
                 history.push("/");
 
                 return fireDatabase.firestore().collection("users").doc(res.user.uid).set({

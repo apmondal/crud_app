@@ -1,14 +1,18 @@
 import { useState } from "react";
+import { useCookies } from "react-cookie";
 import { Link, useHistory } from "react-router-dom";
 import fireDatabase from "../../firebase";
+import {Sign} from "../../utils/jwt";
 import "./Login.scss"
 
 const Login = () => {
     const [data, setData] = useState({
         email: "",
-        password: ""
+        password: "",
+        checkbox: false
     })
     const history = useHistory();
+    const [cookies, setCookies] = useCookies();
 
     const updateValue = (event) => {const name = event.target.name;
         const value = (name === "checkbox")?event.target.checked: event.target.value;
@@ -27,8 +31,24 @@ const Login = () => {
             data.email,
             data.password
         ).then((res) => {
-            console.log(res);
-            history.push("/");
+            const token = Sign(data.email, res.user.uid);
+
+            if(data.checkbox) {
+                setCookies("Token", token, {
+                    expires: new Date(Date.now() + 100000000000),
+                    path: "/"
+                });
+            }
+            else {
+                setCookies("Token", token, {
+                    expires: new Date(Date.now() + 100000),
+                    path: "/"
+                });
+            }
+
+            // console.log(token);
+
+            history.push('/');
         }).catch(err => {
             alert(err.message);
             console.log(err);

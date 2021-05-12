@@ -1,4 +1,4 @@
-import * as firebase from "firebase"
+import firebase from "firebase"
 
 var firebaseConfig = {
     apiKey: "AIzaSyBtscIwboeV6-teOW3SX6YVUgxGoB5SGMg",
@@ -8,6 +8,10 @@ var firebaseConfig = {
     storageBucket: "crud-operation-63a8c.appspot.com",
     messagingSenderId: "651378745140",
     appId: "1:651378745140:web:fd1b111d5abb1a2f4bcf61"
-  };
+};
   // Initialize Firebase
-  firebase.initializeApp(firebaseConfig);
+const fireDatabase = firebase.initializeApp(firebaseConfig);
+
+// const fireDatabase = firebaseDB.database().ref();
+
+export default fireDatabase;

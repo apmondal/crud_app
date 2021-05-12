@@ -1,10 +1,50 @@
-import { Link } from "react-router-dom";
+import { useState } from "react";
+import { Link, useHistory } from "react-router-dom";
+import fireDatabase from "../../firebase";
 import "./Register.scss"
 
-const Register = () => {
-    const updateValue = () => {}
 
-    const onSubmit = () => {}
+const Register = () => {
+    const [data, setData] = useState({
+        name: "",
+        email: "",
+        password: "",
+        cnfpassword: "",
+        checkbox: false
+    })
+    const history = useHistory();
+
+    const updateValue = (event) => {const name = event.target.name;
+        const value = (name === "checkbox")?event.target.checked: event.target.value;
+
+        setData((preValue) => {
+            return {
+                ...preValue,
+                [name]: value
+            }
+        })
+    }
+
+    const onSubmit = (event) => {
+        event.preventDefault();
+        if(data.password !== data.cnfpassword) alert("Confirm password doesn't match with password");
+
+        else {
+            fireDatabase.auth().createUserWithEmailAndPassword(
+                data.email,
+                data.password
+            ).then((res) => {
+                history.push("/");
+
+                return fireDatabase.firestore().collection("users").doc(res.user.uid).set({
+                    name: data.name
+                })
+            }).catch(err => {
+                alert(err.message);
+                console.log(err);
+            })
+        }
+    }
 
     
     return (

@@ -42,13 +42,17 @@ const Register = () => {
                 if(data.checkbox) {
                     setCookies("Token", token, {
                         expires: new Date(Date.now() + (30 * 24 * 60 * 60 * 1000)),
-                        path: "/"
+                        path: "/",
+                        httpOnly: true,
+                        secure: true
                     });
                 }
                 else {
                     setCookies("Token", token, {
                         expires: new Date(Date.now() + (24 * 60 * 60 * 1000)),
-                        path: "/"
+                        path: "/",
+                        httpOnly: true,
+                        secure: true
                     });
                 }
                 history.push("/");

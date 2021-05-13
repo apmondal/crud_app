@@ -35,13 +35,13 @@ const Login = () => {
 
             if(data.checkbox) {
                 setCookies("Token", token, {
-                    expires: new Date(Date.now() + 100000000000),
+                    expires: new Date(Date.now() + (30 * 24 * 60 * 60 * 1000)),
                     path: "/"
                 });
             }
             else {
                 setCookies("Token", token, {
-                    expires: new Date(Date.now() + 100000),
+                    expires: new Date(Date.now() + (24 * 60 * 60 * 1000)),
                     path: "/"
                 });
             }

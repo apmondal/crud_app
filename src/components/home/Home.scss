@@ -1,0 +1,126 @@
+.home_box {
+    margin: 0;
+    padding: 0;
+    animation: transitionin 0.75s;
+}
+
+@keyframes transitionin {
+    from {
+        opacity: 0;
+        transform: rotateX(-10deg);
+    }
+    to {
+        opacity: 1;
+        transform: rotateX(0);
+    }
+}
+
+.home_box > .button {
+    height: 100%;
+    width: 100%;
+    margin: auto;
+    padding-top: 23%;
+    padding-bottom: 23%;
+    text-align: center;
+}
+
+.home_box > .button > .login, .signup {
+    margin: 5px;
+    padding: 10px 30px;
+    font-size: 20px;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+.home_box > .logout {
+    float: right;
+    display: block;
+    margin: 20px 50px;
+    padding: 8px 25px;
+    font-size: 15px;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+.home_box > .welcome {
+    font-size: 30px;
+    font-weight: bold;
+    margin: auto;
+    text-align: center;
+    padding: 20px;
+}
+
+.home_box > .your_data {
+    font-style: italic;
+    font-size: 20px;
+    margin: 30px 50px;
+    padding: 2px;
+}
+
+.home_box > table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.home_box > table > tbody > tr > th {
+    width: 50%;
+    text-align: center;
+    padding: 15px;
+    border-bottom: 1px solid #ddd;
+}
+
+.home_box > table > tbody > tr > td {
+    @extend th
+}
+
+.home_box > table > tbody > tr:hover {
+    background-color:#f5f5f5;
+}
+
+.home_box > .edit_name {
+    @extend .logout;
+    float: left;
+    position: relative;
+    margin-bottom: 0;
+}
+
+.home_box > form {
+    margin-top: 5px;
+    margin-left: 50px;
+    display: flex;
+}
+
+.home_box > form > .name_input {
+    width: 30%;
+    font-size: 15px;
+    float: left;
+    display: block;
+    border-radius: 4px;
+    border: 2px solid rgb(196, 196, 196);
+    padding: 8px;
+}
+
+.home_box > form > button {
+    margin-left: 15px;
+    border-radius: 5px;
+    border: 1px solid grey;
+}
+
+.loading {
+    height: 100%;
+    width: 100%;
+    margin: auto;
+    padding-top: 23%;
+    padding-bottom: 23%;
+    text-align: center;
+}
+
+.loading > h1 {
+    margin-top: 0;
+    animation: spin 0.5s linear infinite;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
